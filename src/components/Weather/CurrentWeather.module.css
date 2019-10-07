@@ -1,0 +1,20 @@
+.CurrentWeather {
+  border: 1px solid #ccc;
+  text-align: center;
+  margin: 25px auto;
+  width: 60%;
+  padding: 25px;
+  background-color: #064461;
+  box-shadow: 0 2px 3px rgb(36, 35, 35);
+  color: #fff;
+}
+
+.CurrentWeather h2 {
+  color: #b31483;
+  display: inline-block;
+}
+
+.CurrentWeather p {
+  color: #fff;
+  display: inline-block;
+}
