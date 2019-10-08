@@ -11,6 +11,7 @@
   border: 1px solid rgb(54, 54, 54);
   box-shadow: 0 2px 3px rgb(36, 35, 35);
   background-color: #064461;
+  border-radius: 10px;
 }
 .SearchBar {
   height: 30px;

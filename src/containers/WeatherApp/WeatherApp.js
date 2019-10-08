@@ -5,6 +5,8 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import SearchBar from "./SearchBar/SearchBar";
 import Aux from "../../hoc/Auxiliary/Auxiliary";
 import CurrentWeather from "../../components/Weather/CurrentWeather";
+import ResultsContainer from "../../components/Weather/ResultsContainer/ResultsContainer";
+import WeatherChart from "./WeatherChart/WeatherChart";
 
 class WeatherApp extends Component {
   state = {
@@ -39,25 +41,32 @@ class WeatherApp extends Component {
     let results = null;
     if (this.state.showResults) {
       results = (
-        <CurrentWeather
-          searchLocation={this.state.selectedCity.name}
-          country={this.state.weatherData.sys.country}
-          clouds={this.state.weatherData.clouds.all}
-          wind={this.state.weatherData.wind.speed}
-          cloudDesc={this.state.weatherData.weather[0].description}
-          location={this.state.weatherData.name}
-          temperature={this.state.weatherData.main.temp}
-          humidity={this.state.weatherData.main.humidity}
-          pressure={this.state.weatherData.main.pressure}
-          sunset={this.state.weatherData.sys.sunset}
-          sunrise={this.state.weatherData.sys.sunrise}
-        />
+        <ResultsContainer
+          title={"Current weather in " + this.state.selectedCity.name}
+        >
+          <CurrentWeather
+            searchLocation={this.state.selectedCity.name}
+            country={this.state.weatherData.sys.country}
+            clouds={this.state.weatherData.clouds.all}
+            wind={this.state.weatherData.wind.speed}
+            weatherDesc={this.state.weatherData.weather[0].description}
+            location={this.state.weatherData.name}
+            temperature={this.state.weatherData.main.temp}
+            humidity={this.state.weatherData.main.humidity}
+            pressure={this.state.weatherData.main.pressure}
+            sunset={this.state.weatherData.sys.sunset}
+            sunrise={this.state.weatherData.sys.sunrise}
+            timezone={this.state.weatherData.timezone}
+          />
+          <WeatherChart />
+        </ResultsContainer>
       );
     }
     return (
       <Aux>
         <SearchBar search={this.onSearchHandler} />
         {results}
+        <WeatherChart />
       </Aux>
     );
   }

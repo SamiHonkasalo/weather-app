@@ -1,0 +1,27 @@
+.Wrapper {
+  text-align: center;
+  margin: 25px auto;
+  max-width: 90%;
+  padding-top: 0px;
+  background-color: transparent;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  box-sizing: border-box;
+}
+
+.ResultsContainer {
+  margin: 0;
+  background-color: #064461;
+  padding: 25px;
+  border: 1px solid #000;
+  border-top: 0;
+  box-shadow: 0 3px 3px rgb(36, 35, 35);
+}
+
+.ResultsContainer h1 {
+  color: #b31483;
+  margin: 10px auto;
+  border-bottom: 1px solid #fff;
+}
