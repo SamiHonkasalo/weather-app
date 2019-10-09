@@ -212,6 +212,15 @@ class SearchBar extends Component {
 
         // If Enter was pressed and a city has been selected -> search
         if (this.state.selectedResult) {
+          // When search is pressed set showResults to false etc
+          this.setState({
+            showResults: false,
+            touched: false,
+            inputValue: "",
+            selectionIndex: 0,
+            searchEnabled: false,
+            selectedResult: null
+          });
           this.props.search(this.state.selectedResult);
         }
         break;
@@ -267,6 +276,15 @@ class SearchBar extends Component {
 
   onSearchHandler = e => {
     e.preventDefault();
+    // When search is pressed set showResults to false etc
+    this.setState({
+      showResults: false,
+      touched: false,
+      inputValue: "",
+      selectionIndex: 0,
+      searchEnabled: false,
+      selectedResult: null
+    });
     // When button is clicked or enter is pressed on the form, pass the search item as a callback to the parent
     this.props.search(this.state.selectedResult);
   };

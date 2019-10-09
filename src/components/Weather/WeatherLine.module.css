@@ -1,5 +1,6 @@
 .WeatherLine {
   display: block;
+  margin: auto;
 }
 
 .Label {

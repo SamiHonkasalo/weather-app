@@ -35,8 +35,4 @@
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   background: #064461;
-  /* background: -moz-linear-gradient(45deg, #064461 0%, #b31483 100%);
-  background: -webkit-linear-gradient(45deg, #064461 0%, #b31483 100%);
-  background: linear-gradient(45deg, #064461 0%, #b31483 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#064461', endColorstr='#b31483',GradientType=1 ); */
 }

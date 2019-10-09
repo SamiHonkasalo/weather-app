@@ -22,8 +22,6 @@ const currentWeather = props => {
   };
 
   // Conver the cloud amount to a string
-  console.log(props.clouds);
-  //const cloudInt = props.clouds.parseInt();
   let cloudStr = "";
   if (props.clouds >= 0 && props.clouds <= 5) {
     cloudStr = "Clear";
@@ -42,8 +40,6 @@ const currentWeather = props => {
   }
 
   // Get current time and compare to sunset/sunrise and display the difference
-  const curTime = new Date();
-  console.log(curTime);
 
   // Times are users local time
   const sunrise = convertTime(props.sunrise);
