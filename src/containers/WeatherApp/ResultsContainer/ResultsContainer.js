@@ -22,7 +22,7 @@ class ResultsContainer extends Component {
     if (this.state.selectedView === 0) {
       results = (
         <div className={styles.ResultsContainer}>
-          <h1>{"Current weather in " + this.props.city}</h1>
+          <h1> {"Current weather in " + this.props.city} </h1>{" "}
           <CurrentWeather
             country={this.props.current.sys.country}
             clouds={this.props.current.clouds.all}
@@ -35,16 +35,16 @@ class ResultsContainer extends Component {
             sunset={this.props.current.sys.sunset}
             sunrise={this.props.current.sys.sunrise}
             timezone={this.props.current.timezone}
-          />
-          <WeatherChart data={this.props.data5} type={0} />
+          />{" "}
+          <WeatherChart data={this.props.data5} type={0} />{" "}
         </div>
       );
     }
     if (this.state.selectedView === 1) {
       results = (
         <div className={styles.ResultsContainer}>
-          <h1>{"Five day forecast for " + this.props.city}</h1>
-          <WeatherChart data={this.props.data10} type={1} />
+          <h1> {"Ten day forecast for " + this.props.city} </h1>{" "}
+          <WeatherChart data={this.props.data10} type={1} />{" "}
         </div>
       );
     }
@@ -54,8 +54,8 @@ class ResultsContainer extends Component {
         <Tabs
           className={styles.Tabs}
           clicked={n => this.tabChangedHandler(n)}
-        />
-        {results}
+        />{" "}
+        {results}{" "}
       </div>
     );
   }

@@ -26,6 +26,7 @@ class WeatherChart extends Component {
       this.state.options.xIntervalType = "hour";
       this.state.options.xValueFormatString = "DD-MMM HH:mm";
       this.state.options.title = "Time";
+      this.state.options.titleText = "5 day weather";
     }
     // 10 day specific options
     if (this.props.type === 1) {
@@ -34,12 +35,14 @@ class WeatherChart extends Component {
       this.state.options.xValueFormatString = "DD-MMM";
       this.state.options.title = "Day";
       this.state.options.tenday = true;
+      this.state.options.titleText = "10 day weather";
     }
     // Historical data specific options
     if (this.props.type === 2) {
       this.state.options.xInterval = 1;
       this.state.options.xIntervalType = "year";
       this.state.options.title = "Date";
+      this.state.options.titleText = "X year weather";
     }
 
     // Go through the input data and render it to the graph
@@ -178,7 +181,7 @@ class WeatherChart extends Component {
       backgroundColor: "#fff",
       fontFamily: "Open sans, sans-serif",
       title: {
-        text: "5 Day Weather",
+        text: this.state.options.titleText,
         fontFamily: "Open sans, sans-serif"
       },
       axisY: {
