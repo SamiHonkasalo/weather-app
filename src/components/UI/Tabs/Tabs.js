@@ -14,7 +14,6 @@ class Tabs extends Component {
     this.selector = React.createRef();
     this.t1 = React.createRef();
     this.t2 = React.createRef();
-    this.t3 = React.createRef();
     this.state = {
       height: window.innerHeight,
       width: window.innerWidth
@@ -99,15 +98,6 @@ class Tabs extends Component {
           name="1"
         >
           10 Day Forecast
-        </a>
-        <a
-          href="/"
-          onClick={e => this.tabClickedHandler(e)}
-          className={null}
-          ref={this.t3}
-          name="2"
-        >
-          History
         </a>
       </nav>
     );

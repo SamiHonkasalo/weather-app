@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CanvasJSReact from "../../../assets/canvasjs.react";
 import styles from "./WeatherChart.module.css";
+import { tsImportEqualsDeclaration } from "@babel/types";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -11,13 +12,15 @@ class WeatherChart extends Component {
     tempMax: [],
     rainData: [],
     snowData: [],
-    options: {}
+    options: {},
+    weatherIcons: []
   };
 
   constructor(props) {
     super(props);
     // Create a reference to the chart
     this.chart = React.createRef();
+    this.container = React.createRef();
 
     // Check the props to determine if this is used as a 10day or 5day chart or historical chart
     // 5 day specific options
@@ -36,13 +39,6 @@ class WeatherChart extends Component {
       this.state.options.title = "Day";
       this.state.options.tenday = true;
       this.state.options.titleText = "10 day weather";
-    }
-    // Historical data specific options
-    if (this.props.type === 2) {
-      this.state.options.xInterval = 1;
-      this.state.options.xIntervalType = "year";
-      this.state.options.title = "Date";
-      this.state.options.titleText = "X year weather";
     }
 
     // Go through the input data and render it to the graph
@@ -65,7 +61,9 @@ class WeatherChart extends Component {
           temperatureData.push({
             // Convert the unix time format to readable
             x: new Date(el.dt * 1000),
-            y: parseFloat((el.main.temp - 273.15).toFixed(1))
+            y: parseFloat((el.main.temp - 273.15).toFixed(1)),
+            desc: el.weather[0].description,
+            icon: el.weather[0].icon
           });
 
           // Check if rain or snow
@@ -112,7 +110,9 @@ class WeatherChart extends Component {
           temperatureMin.push({
             // Convert the unix time format to readable
             x: date,
-            y: parseFloat((el.temp.min - 273.15).toFixed(1))
+            y: parseFloat((el.temp.min - 273.15).toFixed(1)),
+            desc: el.weather[0].description,
+            icon: el.weather[0].icon
           });
 
           temperatureMax.push({
@@ -158,7 +158,6 @@ class WeatherChart extends Component {
       default:
         break;
     }
-    console.log(temperatureMax);
     this.state.temperatureData = temperatureData;
     this.state.temperatureMin = temperatureMin;
     this.state.temperatureMax = temperatureMax;
@@ -166,9 +165,83 @@ class WeatherChart extends Component {
     this.state.snowData = snowData;
   }
 
-  componentDidMount() {
+  positionImage = (chart, image, index) => {
+    var imageCenter = chart.axisX[0].convertValueToPixel(
+      chart.data[0].dataPoints[index].x
+    );
+    var imageTop = chart.axisY[0].convertValueToPixel(
+      chart.axisY[0].maximum
+    );
+    console.log(image)
+    console.log(imageCenter)
+    console.log(imageTop)
+
+    // image.width("40px").css({
+    //   left: imageCenter - 20 + "px",
+    //   position: "absolute",
+    //   top: imageTop + "px"
+    // });
+  };
+
+  addImages=(chart) => {
+    let images = [];
+    for (var i = 0; i < chart.data[0].dataPoints.length; i++) {
+      var dpsName = chart.data[0].dataPoints[i].icon;
+      if (dpsName === "10d") {
+        images.push(
+          "<img src=https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/cloudy.png/>"
+        );
+      } else {
+        images.push(
+          "<img src=https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/cloudy.png/>"
+        );
+      }
+      // } else if (dpsName == "rainy") {
+      //   images.push(
+      //     $("<img>").attr(
+      //       "src",
+      //       "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/rainy.png"
+      //     )
+      //   );
+      // } else if (dpsName == "sunny") {
+      //   images.push(
+      //     $("<img>").attr(
+      //       "src",
+      //       "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/sunny.png"
+      //     )
+      //   );
+      // }
+
+      // images[i]
+      //   .attr("class", dpsName)
+      //   .appendTo($("#chartContainer>.canvasjs-chart-container"));
+      this.positionImage(chart,images[i], i);
+      return images;
+    };
+  }
+
+componentDidMount() {
     // Logging the chart data etc
     //console.log(this.chart.current.chart);
+
+    const icons = this.addImages(this.chart.current.chart);
+    this.setState({weatherIcons:icons})
+    
+
+    // $( window ).resize(function() {
+    // 	var cloudyCounter = 0, rainyCounter = 0, sunnyCounter = 0;
+    // 	var imageCenter = 0;
+    // 	for(var i=0;i<chart.data[0].dataPoints.length;i++) {
+    // 		imageCenter = chart.axisX[0].convertValueToPixel(chart.data[0].dataPoints[i].x) - 20;
+    // 		if(chart.data[0].dataPoints[i].name == "cloudy") {
+    // 			$(".cloudy").eq(cloudyCounter++).css({ "left": imageCenter});
+    // 		} else if(chart.data[0].dataPoints[i].name == "rainy") {
+    // 			$(".rainy").eq(rainyCounter++).css({ "left": imageCenter});
+    // 		} else if(chart.data[0].dataPoints[i].name == "sunny") {
+    // 			$(".sunny").eq(sunnyCounter++).css({ "left": imageCenter});
+    // 		}
+    // 	}
+    // });
   }
 
   render() {
@@ -269,7 +342,8 @@ class WeatherChart extends Component {
       ]
     };
     return (
-      <div className={styles.ChartContainer}>
+      <div ref={this.container} className={styles.ChartContainer}>
+        {this.state.weatherIcons}
         <CanvasJSChart options={options} ref={this.chart} />
       </div>
     );

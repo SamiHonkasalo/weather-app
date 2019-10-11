@@ -4,7 +4,6 @@ import styles from "./ResultsContainer.module.css";
 import Tabs from "../../../components/UI/Tabs/Tabs";
 import CurrentWeather from "../../../components/Weather/CurrentWeather";
 import WeatherChart from "../WeatherChart/WeatherChart";
-import HistoryData from "../HistoryData/HistoryData";
 
 class ResultsContainer extends Component {
   state = {
@@ -46,14 +45,6 @@ class ResultsContainer extends Component {
         <div className={styles.ResultsContainer}>
           <h1> {"Ten day forecast for " + this.props.city} </h1>{" "}
           <WeatherChart data={this.props.data10} type={1} />{" "}
-        </div>
-      );
-    }
-    if (this.state.selectedView === 2) {
-      results = (
-        <div className={styles.ResultsContainer}>
-          <h1> {"Historical weather for " + this.props.city} </h1>{" "}
-          <HistoryData station={this.props.selectedStation} />
         </div>
       );
     }

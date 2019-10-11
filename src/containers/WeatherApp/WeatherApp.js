@@ -7,16 +7,9 @@ import Aux from "../../hoc/Auxiliary/Auxiliary";
 import ResultsContainer from "./ResultsContainer/ResultsContainer";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
-//ToDo Delete
-import HistoryData from "./HistoryData/HistoryData";
-
 class WeatherApp extends Component {
   state = {
     selectedCity: null,
-    selectedStation: {
-      name: null,
-      id: null
-    },
     weatherCurrent: null,
     weatherFiveDays: null,
     weatherTenDays: null,
@@ -73,49 +66,10 @@ class WeatherApp extends Component {
                 console.log(response);
 
                 this.setState({
-                  weatherTenDays: response.data
+                  weatherTenDays: response.data,
+                  showResults: true,
+                  loading: false
                 });
-
-                // After the previous query is done, ask for the station number for these cordinates from another API
-                axios
-                  .get(
-                    "https://api.meteostat.net/v1/stations/nearby?lat=" +
-                      selection.lat +
-                      "&lon=" +
-                      selection.lon +
-                      "&limit=1&key=Rbe0qZS1"
-                    // selection.lat +
-                    // "lon=103.83" +
-                    // selection.lon +
-                    // "&limit=5&key=Rbe0qZS1"
-                  )
-                  .then(response => {
-                    console.log(response);
-                    let selectedStation;
-                    // Check if the ID exists
-                    if (response.data.data.length !== 0) {
-                      console.log("if");
-                      selectedStation = {
-                        name: response.data.data[0].name,
-                        id: response.data.data[0].id
-                      };
-                      this.setState({
-                        showResults: true,
-                        loading: false,
-                        selectedStation: selectedStation
-                      });
-                    } else {
-                      this.setState({
-                        showResults: true,
-                        loading: false,
-                        selectedStation: null
-                      });
-                    }
-                  })
-                  .catch(error => {
-                    console.log(error);
-                    this.setState({ loading: false });
-                  });
               })
               .catch(error => {
                 console.log(error);
