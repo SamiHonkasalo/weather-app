@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CanvasJSReact from "../../../assets/canvasjs.react";
 import styles from "./WeatherChart.module.css";
-import { tsImportEqualsDeclaration } from "@babel/types";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -165,69 +164,70 @@ class WeatherChart extends Component {
     this.state.snowData = snowData;
   }
 
-  positionImage = (chart, image, index) => {
-    var imageCenter = chart.axisX[0].convertValueToPixel(
-      chart.data[0].dataPoints[index].x
-    );
-    var imageTop = chart.axisY[0].convertValueToPixel(
-      chart.axisY[0].maximum
-    );
-    console.log(image)
-    console.log(imageCenter)
-    console.log(imageTop)
+  // Function to set the position of a single image
+  // positionImage = (chart, image, index) => {
+  //   var imageCenter = chart.axisX[0].convertValueToPixel(
+  //     chart.data[0].dataPoints[index].x
+  //   );
+  //   var imageTop = chart.axisY[0].convertValueToPixel(chart.axisY[0].maximum);
+  //   console.log(image);
+  //   console.log(imageCenter);
+  //   console.log(imageTop);
 
-    // image.width("40px").css({
-    //   left: imageCenter - 20 + "px",
-    //   position: "absolute",
-    //   top: imageTop + "px"
-    // });
+  //   // image.width("40px").css({
+  //   //   left: imageCenter - 20 + "px",
+  //   //   position: "absolute",
+  //   //   top: imageTop + "px"
+  //   // });
+  // };
+
+  addImages = chart => {
+    let images = [];
+
+    let imageCenter = null;
+    let imageTop = null;
+    let imageWidth = null;
+    let loopInit = 1;
+    let loopLength = chart.axisX[0]._labels.length - 1;
+
+    for (let i = loopInit; i < loopLength; i++) {
+      // Check the weather icon
+      let weatherIcon = chart.data[0].dataPoints[i].icon;
+      let weatherDesc = chart.data[0].dataPoints[i].desc;
+      imageCenter = chart.axisX[0].convertValueToPixel(
+        chart.axisX[0]._labels[i].position
+      );
+      imageTop = chart.axisY[0].convertValueToPixel(chart.axisY[0].maximum);
+      imageWidth = 30;
+
+      // First check the image position etc
+      const imgStyle = {
+        width: imageWidth + "px",
+        position: "absolute",
+        top: imageTop - imageWidth - 5 + "px",
+        left: imageCenter - imageWidth / 2 + "px",
+        backgroundColor: "#83bdcc",
+        zIndex: 1
+      };
+      const imgSrc =
+        "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
+      images.push(
+        <div className={styles.Tooltip}>
+          <img key={i} src={imgSrc} alt="cloudy" style={imgStyle} />
+          <span className={styles.TooltipText}>{weatherDesc}</span>
+        </div>
+      );
+    }
+    return images;
   };
 
-  addImages=(chart) => {
-    let images = [];
-    for (var i = 0; i < chart.data[0].dataPoints.length; i++) {
-      var dpsName = chart.data[0].dataPoints[i].icon;
-      if (dpsName === "10d") {
-        images.push(
-          "<img src=https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/cloudy.png/>"
-        );
-      } else {
-        images.push(
-          "<img src=https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/cloudy.png/>"
-        );
-      }
-      // } else if (dpsName == "rainy") {
-      //   images.push(
-      //     $("<img>").attr(
-      //       "src",
-      //       "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/rainy.png"
-      //     )
-      //   );
-      // } else if (dpsName == "sunny") {
-      //   images.push(
-      //     $("<img>").attr(
-      //       "src",
-      //       "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/sunny.png"
-      //     )
-      //   );
-      // }
-
-      // images[i]
-      //   .attr("class", dpsName)
-      //   .appendTo($("#chartContainer>.canvasjs-chart-container"));
-      this.positionImage(chart,images[i], i);
-      return images;
-    };
-  }
-
-componentDidMount() {
+  componentDidMount() {
     // Logging the chart data etc
     //console.log(this.chart.current.chart);
-
+    //------------
     const icons = this.addImages(this.chart.current.chart);
-    this.setState({weatherIcons:icons})
-    
-
+    this.setState({ weatherIcons: icons });
+    //------------
     // $( window ).resize(function() {
     // 	var cloudyCounter = 0, rainyCounter = 0, sunnyCounter = 0;
     // 	var imageCenter = 0;
@@ -255,7 +255,8 @@ componentDidMount() {
       fontFamily: "Open sans, sans-serif",
       title: {
         text: this.state.options.titleText,
-        fontFamily: "Open sans, sans-serif"
+        fontFamily: "Open sans, sans-serif",
+        margin: 30
       },
       axisY: {
         title: "Temperature",
