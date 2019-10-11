@@ -142,6 +142,7 @@ class WeatherApp extends Component {
     if (this.state.showResults && !this.state.loading) {
       results = (
         <ResultsContainer
+          selectedStation={this.state.selectedStation}
           city={this.state.selectedCity.name}
           current={this.state.weatherCurrent}
           data5={this.state.weatherFiveDays}
@@ -156,7 +157,6 @@ class WeatherApp extends Component {
     return (
       <Aux>
         <SearchBar search={this.onSearchHandler} />
-        <HistoryData />
         {showSpinner}
         {results}
       </Aux>

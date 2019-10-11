@@ -53,7 +53,7 @@ class ResultsContainer extends Component {
       results = (
         <div className={styles.ResultsContainer}>
           <h1> {"Historical weather for " + this.props.city} </h1>{" "}
-          <HistoryData />
+          <HistoryData station={this.props.selectedStation} />
         </div>
       );
     }
