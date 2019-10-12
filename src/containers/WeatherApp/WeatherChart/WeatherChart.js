@@ -29,6 +29,7 @@ class WeatherChart extends Component {
       this.state.options.xValueFormatString = "DD-MMM HH:mm";
       this.state.options.title = "Time";
       this.state.options.titleText = "5 day weather";
+      this.state.options.dataset = 0;
     }
     // 10 day specific options
     if (this.props.type === 1) {
@@ -38,6 +39,7 @@ class WeatherChart extends Component {
       this.state.options.title = "Day";
       this.state.options.tenday = true;
       this.state.options.titleText = "10 day weather";
+      this.state.options.dataset = 2;
     }
 
     // Go through the input data and render it to the graph
@@ -164,56 +166,51 @@ class WeatherChart extends Component {
     this.state.snowData = snowData;
   }
 
-  // Function to set the position of a single image
-  // positionImage = (chart, image, index) => {
-  //   var imageCenter = chart.axisX[0].convertValueToPixel(
-  //     chart.data[0].dataPoints[index].x
-  //   );
-  //   var imageTop = chart.axisY[0].convertValueToPixel(chart.axisY[0].maximum);
-  //   console.log(image);
-  //   console.log(imageCenter);
-  //   console.log(imageTop);
-
-  //   // image.width("40px").css({
-  //   //   left: imageCenter - 20 + "px",
-  //   //   position: "absolute",
-  //   //   top: imageTop + "px"
-  //   // });
-  // };
-
   addImages = chart => {
     let images = [];
-
+    let dataSet = this.state.options.dataset;
     let imageCenter = null;
     let imageTop = null;
     let imageWidth = null;
     let loopInit = 1;
-    let loopLength = chart.axisX[0]._labels.length - 1;
+    let decVal = 1;
+    let shiftVal = 0;
+    if (dataSet === 2) {
+      loopInit = 0;
+      decVal = 2;
+      shiftVal = 1;
+    }
+
+    let loopLength = chart.axisX[0]._labels.length - decVal;
 
     for (let i = loopInit; i < loopLength; i++) {
       // Check the weather icon
-      let weatherIcon = chart.data[0].dataPoints[i].icon;
-      let weatherDesc = chart.data[0].dataPoints[i].desc;
+      let weatherIcon = chart.data[dataSet].dataPoints[i].icon;
+      let weatherDesc = chart.data[dataSet].dataPoints[i].desc;
       imageCenter = chart.axisX[0].convertValueToPixel(
-        chart.axisX[0]._labels[i].position
+        chart.axisX[0]._labels[i + shiftVal].position
       );
       imageTop = chart.axisY[0].convertValueToPixel(chart.axisY[0].maximum);
       imageWidth = 30;
 
       // First check the image position etc
-      const imgStyle = {
+      const divStyle = {
         width: imageWidth + "px",
+        height: imageWidth + "px",
         position: "absolute",
         top: imageTop - imageWidth - 5 + "px",
         left: imageCenter - imageWidth / 2 + "px",
         backgroundColor: "#83bdcc",
         zIndex: 1
       };
+      const imgStyle = {
+        width: imageWidth + "px"
+      };
       const imgSrc =
         "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
       images.push(
-        <div className={styles.Tooltip}>
-          <img key={i} src={imgSrc} alt="cloudy" style={imgStyle} />
+        <div key={i} className={styles.Tooltip} style={divStyle}>
+          <img src={imgSrc} alt={weatherDesc} style={imgStyle} />
           <span className={styles.TooltipText}>{weatherDesc}</span>
         </div>
       );
@@ -287,6 +284,7 @@ class WeatherChart extends Component {
           toolTipContent:
             "{x}: <br> <span style='\"'color: {color};'\"'>{name}</span>: {y}°C",
           xValueFormatString: this.state.options.xValueFormatString,
+          xValueType: "dateTime",
           lineColor: "#b31483",
           color: "#b31483",
           markerColor: "#b31483",
@@ -300,6 +298,7 @@ class WeatherChart extends Component {
           toolTipContent:
             "{x}: <br> <span style='\"'color: {color};'\"'>{name}</span>: {y}°C",
           xValueFormatString: this.state.options.xValueFormatString,
+          xValueType: "dateTime",
           lineColor: "#eb0000",
           color: "#eb0000",
           markerColor: "#eb0000",
@@ -313,31 +312,36 @@ class WeatherChart extends Component {
           toolTipContent:
             "<span style='\"'color: {color};'\"'>{name}</span>: {y}°C",
           xValueFormatString: this.state.options.xValueFormatString,
+          xValueType: "dateTime",
           lineColor: "#ffeb0a",
           color: "#ffeb0a",
           markerColor: "#ffeb0a",
           dataPoints: [...this.state.temperatureMin]
         },
         {
-          type: "column",
+          type: "stackedColumn",
           name: "Rain",
           axisYType: "secondary",
           showInLegend: true,
           toolTipContent:
             "<span style='\"'color: {color};'\"'>{name}</span>: {y}mm",
+          xValueFormatString: this.state.options.xValueFormatString,
+          xValueType: "dateTime",
           color: "#003a52",
-          fillOpacity: "0.7",
+          fillOpacity: "0.65",
           dataPoints: [...this.state.rainData]
         },
         {
-          type: "column",
+          type: "stackedColumn",
           name: "Snow",
           axisYType: "secondary",
           showInLegend: true,
           toolTipContent:
             "<span style='\"'color: {color};'\"'>{name}</span>: {y}mm",
+          xValueFormatString: this.state.options.xValueFormatString,
+          xValueType: "dateTime",
           color: "#00a6eb",
-          fillOpacity: "0.5",
+          fillOpacity: "0.65",
           dataPoints: [...this.state.snowData]
         }
       ]

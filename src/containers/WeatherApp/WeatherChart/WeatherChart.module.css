@@ -20,6 +20,9 @@
   padding: 5px 0;
   border-radius: 6px;
   text-transform: capitalize;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+  margin-bottom: -10px;
 
   position: absolute;
   bottom: 100%;
@@ -31,4 +34,18 @@
 /* Show the tooltip text when you mouse over the tooltip container */
 .Tooltip:hover .TooltipText {
   visibility: visible;
+  margin-bottom: 10px;
+  opacity: 1;
+}
+
+/* Tooltip bottom arrow */
+.Tooltip .TooltipText::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -7px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: #83bdcc transparent transparent transparent;
 }
