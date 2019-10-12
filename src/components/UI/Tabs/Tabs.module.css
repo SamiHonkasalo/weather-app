@@ -37,7 +37,7 @@
 }
 
 /* Selector does not work well on smaller screens, so it is hidden */
-@media (max-width: 1350px){
+@media (max-width: 1350px) {
   .Tabs .Selector {
     display: none;
   }

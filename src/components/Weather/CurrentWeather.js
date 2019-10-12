@@ -60,32 +60,40 @@ const currentWeather = props => {
   // Use the custom WeatherLine component for each line
   return (
     <div className={styles.CurrentWeather}>
-      <WeatherLine label="Closest station name" text={props.location} />
-      <WeatherLine label="Weather description:" text={props.weatherDesc} />
-      <WeatherLine
-        label="Cloudiness:"
-        text={" " + cloudStr + " (" + props.clouds + "%)"}
-      />
-      <WeatherLine label="Wind speed:" text={props.wind.toFixed(1) + " m/s"} />
-      <WeatherLine
-        label="Temperature:"
-        text={
-          (parseInt(props.temperature) - 273.15).toFixed(1) +
-          " °C / " +
-          ((parseInt(props.temperature) * 9) / 5 - 459.67).toFixed(1) +
-          " °F"
-        }
-      />
-      <WeatherLine label="Humidity:" text={props.humidity + " %"} />
-      <WeatherLine label="Pressure:" text={props.pressure + " hpa"} />
-      <WeatherLine
-        label="Sunrise at:"
-        text={sunrise + " (at " + sunriseLocal + " local time)"}
-      />
-      <WeatherLine
-        label="Sunset at:"
-        text={sunset + " (at " + sunsetLocal + " local time)"}
-      />
+      <WeatherLine label="Closest station:" text={props.location} />
+      <WeatherLine label={"Current Weather:"} />
+      <div className={styles.Left}>
+        <WeatherLine label="Weather description" text={props.weatherDesc} />
+        <WeatherLine
+          label="Cloudiness:"
+          text={" " + cloudStr + " (" + props.clouds + "%)"}
+        />
+        <WeatherLine
+          label="Wind speed:"
+          text={props.wind.toFixed(1) + " m/s"}
+        />
+        <WeatherLine
+          label="Temperature:"
+          text={
+            (parseInt(props.temperature) - 273.15).toFixed(1) +
+            " °C / " +
+            ((parseInt(props.temperature) * 9) / 5 - 459.67).toFixed(1) +
+            " °F"
+          }
+        />
+      </div>
+      <div className={styles.Right}>
+        <WeatherLine label="Humidity:" text={props.humidity + " %"} />
+        <WeatherLine label="Pressure:" text={props.pressure + " hpa"} />
+        <WeatherLine
+          label="Sunrise at:"
+          text={sunrise + " (at " + sunriseLocal + " local time)"}
+        />
+        <WeatherLine
+          label="Sunset at:"
+          text={sunset + " (at " + sunsetLocal + " local time)"}
+        />
+      </div>
     </div>
   );
 };

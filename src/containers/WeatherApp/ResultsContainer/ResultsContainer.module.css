@@ -18,7 +18,7 @@
   background-color: #064461;
   padding: 25px;
   border-top: 0;
-  box-shadow: 0 3px 3px rgb(36, 35, 35);
+  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.4);
 }
 
 .ResultsContainer h1 {

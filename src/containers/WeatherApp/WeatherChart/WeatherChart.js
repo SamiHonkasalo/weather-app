@@ -200,7 +200,7 @@ class WeatherChart extends Component {
         position: "absolute",
         top: imageTop - imageWidth - 5 + "px",
         left: imageCenter - imageWidth / 2 + "px",
-        backgroundColor: "#83bdcc",
+        backgroundColor: "#c8edf7",
         zIndex: 1
       };
       const imgStyle = {
