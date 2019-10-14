@@ -252,14 +252,14 @@ class SearchBar extends Component {
 
   onBlurHandler = () => {
     // When focus from input field is gone (blur) -> set showResults to false etc
-    this.setState({
-      showResults: false,
-      touched: false,
-      inputValue: "",
-      selectionIndex: 0,
-      searchEnabled: false,
-      selectedResult: null
-    });
+    // this.setState({
+    //   showResults: false,
+    //   touched: false,
+    //   inputValue: "",
+    //   selectionIndex: 0,
+    //   searchEnabled: false,
+    //   selectedResult: null
+    // });
   };
 
   onClickHandler = (result, e) => {

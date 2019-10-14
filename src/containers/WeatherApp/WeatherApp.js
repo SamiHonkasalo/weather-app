@@ -7,6 +7,9 @@ import Aux from "../../hoc/Auxiliary/Auxiliary";
 import ResultsContainer from "./ResultsContainer/ResultsContainer";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
+// ToDo: Delete
+import WeatherCard from "../../components/Weather/WeatherCard/WeatherCard";
+
 class WeatherApp extends Component {
   state = {
     selectedCity: null,
@@ -113,6 +116,22 @@ class WeatherApp extends Component {
         <SearchBar search={this.onSearchHandler} />
         {showSpinner}
         {results}
+        <WeatherCard
+          city={"Helsinki, Finland"}
+          weatherTime={new Date()}
+          weatherIcon={"09n"}
+          country={"Finland"}
+          clouds={"85"}
+          wind={"1.4"}
+          weatherDesc={"Sunny"}
+          location={"Katajanokka"}
+          temperature={"300"}
+          humidity={"65"}
+          pressure={"4.5"}
+          sunset={new Date()}
+          sunrise={new Date()}
+          timezone={new Date()}
+        />
       </Aux>
     );
   }

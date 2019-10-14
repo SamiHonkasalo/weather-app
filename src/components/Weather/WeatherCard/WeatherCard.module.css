@@ -1,0 +1,95 @@
+.WeatherCard {
+  margin: auto;
+  width: 80%;
+  max-width: 1100px;
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 5px;
+}
+
+.Title {
+  width: 30%;
+  height: auto;
+  font-size: 1em;
+  font-weight: bold;
+  color: #b31483;
+  padding-top: 20px;
+}
+
+.Title h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.Time {
+  font-size: 0.7em;
+  word-wrap: break-word;
+  padding-top: 20px;
+  color: #000;
+}
+
+.Temperature {
+  width: 70%;
+  font-size: 2.2em;
+  color: #b31483;
+  padding-left: 0px;
+  padding-top: 20px;
+}
+.Temperature h1 {
+  margin-top: 0;
+  flex-shrink: 2;
+  display: inline-block;
+}
+
+.Station {
+  font-size: 1em;
+  color: #000;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.Icon img {
+  height: 100px;
+  width: 100px;
+}
+
+.Description img {
+}
+
+.Humidity img {
+  height: 40px;
+  width: 40px;
+}
+
+.Wind img {
+  height: 40px;
+  width: 40px;
+}
+
+.Cloud img {
+  height: 40px;
+  width: 40px;
+}
+
+.Rain img {
+  height: 40px;
+  width: 40px;
+}
+
+.Snow img {
+  height: 40px;
+  width: 40px;
+}
+
+.Sunrise img {
+  height: 40px;
+  width: 40px;
+}
+
+.Sunset img {
+  height: 40px;
+  width: 40px;
+}

@@ -4,6 +4,7 @@ import styles from "./ResultsContainer.module.css";
 import Tabs from "../../../components/UI/Tabs/Tabs";
 import CurrentWeather from "../../../components/Weather/CurrentWeather";
 import WeatherChart from "../WeatherChart/WeatherChart";
+import WeatherCard from "../../../components/Weather/WeatherCard/WeatherCard";
 
 class ResultsContainer extends Component {
   state = {
@@ -37,6 +38,22 @@ class ResultsContainer extends Component {
             timezone={this.props.current.timezone}
           />
           <WeatherChart data={this.props.data5} type={0} />
+          {/* <WeatherCard
+            city={this.props.city}
+            weatherTime={this.props.current.dt}
+            country={this.props.current.sys.country}
+            clouds={this.props.current.clouds.all}
+            wind={this.props.current.wind.speed}
+            weatherDesc={this.props.current.weather[0].description}
+            weatherIcon={this.props.current.weather[0].description.icon}
+            location={this.props.current.name}
+            temperature={this.props.current.main.temp}
+            humidity={this.props.current.main.humidity}
+            pressure={this.props.current.main.pressure}
+            sunset={this.props.current.sys.sunset}
+            sunrise={this.props.current.sys.sunrise}
+            timezone={this.props.current.timezone}
+          /> */}
         </div>
       );
     }

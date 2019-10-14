@@ -20,6 +20,8 @@
   padding: 5px;
   text-align: left;
   box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3);
+  border: none;
+  border-bottom: 1px solid #eee;
 }
 .SearchBarContainer i {
   margin: auto;
@@ -53,7 +55,6 @@
   margin: 0;
   width: 100%;
   padding: 5px;
-  border: 1px solid #b31483;
   box-sizing: border-box;
   height: 30px;
   background-color: #fff;
@@ -66,6 +67,6 @@
 
 .Active {
   font-weight: bold;
-  background-color: #064461;
+  background-color: #226280;
   color: #fff;
 }

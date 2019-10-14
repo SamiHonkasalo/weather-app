@@ -20,9 +20,3 @@
   border-top: 0;
   box-shadow: 0 1em 2em rgba(0, 0, 0, 0.4);
 }
-
-.ResultsContainer h1 {
-  color: #b31483;
-  margin: 10px auto;
-  border-bottom: 1px solid #fff;
-}
