@@ -118,19 +118,21 @@ class WeatherApp extends Component {
         {results}
         <WeatherCard
           city={"Helsinki, Finland"}
-          weatherTime={new Date()}
+          weatherTime={new Date()/1000}
           weatherIcon={"09n"}
           country={"Finland"}
-          clouds={"85"}
-          wind={"1.4"}
+          clouds={85}
+          rain={1.6}
+          snow={2.5}
+          wind={1.4}
           weatherDesc={"Sunny"}
           location={"Katajanokka"}
-          temperature={"300"}
-          humidity={"65"}
-          pressure={"4.5"}
-          sunset={new Date()}
-          sunrise={new Date()}
-          timezone={new Date()}
+          temperature={300}
+          humidity={65}
+          pressure={4.5}
+          sunset={new Date()/1000}
+          sunrise={new Date()/1000}
+          timezone={new Date()/1000}
         />
       </Aux>
     );

@@ -51,45 +51,105 @@
   margin-bottom: 10px;
 }
 
+.Icon {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Icon img {
   height: 100px;
   width: 100px;
 }
 
-.Description img {
+.Description {
+  
+}
+
+.Humidity {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Humidity img {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
+}
+
+.Humidity h3{
+}
+
+.Wind {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Wind img {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
+}
+
+.Cloud {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Cloud img {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
+}
+
+.Rain {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Rain img {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
+}
+
+.Snow {
+width: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .Snow img {
-  height: 40px;
-  width: 40px;
+  height: 5;
+  width: 50px;
+}
+
+.Sunrise {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Sunrise img {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
+}
+
+.Sunset {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Sunset img {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
 }

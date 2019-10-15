@@ -2,7 +2,14 @@ import React from "react";
 
 import styles from "./WeatherCard.module.css";
 import humidityIcon from "../../../assets/images/004-rain.svg";
-import windIcon from "../../../assets/images/wind.svg";
+import windIcon from "../../../assets/images/001-wind.svg";
+import pressureIcon from "../../../assets/images/003-air.svg"
+import rainIcon from "../../../assets/images/013-sturm.svg";
+import cloudIcon from "../../../assets/images/006-cloud.svg";
+import sunriseIcon from "../../../assets/images/008-sun.svg";
+import sunsetIcon from "../../../assets/images/010-sunset.svg";
+import snowIcon from "../../../assets/images/012-frost.svg";
+
 
 const currentWeather = props => {
   // Function to convert sunrise and sunset times to readable time from unix time
@@ -124,10 +131,7 @@ const currentWeather = props => {
 
       <div className={styles.Icon}>
         <img src={imgSrc} alt={props.weatherDesc} />
-      </div>
-
-      <div className={styles.Description}>
-        <h3>{props.weatherDesc}</h3>
+        <h3 className={styles.Description}>{props.weatherDesc}</h3>
       </div>
 
       <div className={styles.Humidity}>
@@ -137,31 +141,31 @@ const currentWeather = props => {
 
       <div className={styles.Wind}>
         <img src={windIcon} alt="Wind" />
-        <h3>{props.windSpeed + " m/s"}</h3>
+        <h3>{parseFloat(props.wind) + " m/s"}</h3>
       </div>
 
       <div className={styles.Cloud}>
-        <img src="" alt="" />
+        <img src={cloudIcon} alt="Clouds" />
         <h3>{cloudStr + " (" + props.clouds + " %)"}</h3>
       </div>
 
       <div className={styles.Rain}>
-        <img src="" alt="" />
-        <h3>{props.rain + " mm"}</h3>
+        <img src={rainIcon} alt="Rain" />
+        <h3>{parseFloat(props.rain) + " mm"}</h3>
       </div>
 
       <div className={styles.Snow}>
-        <img src="" alt="" />
-        <h3>{props.snow + " mm"}</h3>
+        <img src={snowIcon} alt="Snow" />
+        <h3>{parseFloat(props.snow) + " mm"}</h3>
       </div>
 
       <div className={styles.Sunrise}>
-        <img src="" alt="" />
+        <img src={sunriseIcon} alt="Sunrise" />
         <h3>{sunrise + " (" + sunriseLocal + " local)"}</h3>
       </div>
 
       <div className={styles.Sunset}>
-        <img src="" alt="" />
+        <img src={sunsetIcon} alt="Sunset" />
         <h3>{sunset + " (" + sunsetLocal + " local)"}</h3>
       </div>
     </div>
