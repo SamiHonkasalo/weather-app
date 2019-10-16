@@ -52,7 +52,6 @@ class SearchBar extends Component {
         }
       })
         .then(response => {
-          console.log(response);
           // Initialize the result array
           let results = [];
           // Create a copy of the results for later usage
@@ -81,7 +80,6 @@ class SearchBar extends Component {
           });
         })
         .catch(error => {
-          console.log(error);
           this.setState({ loading: false, touched: false });
         });
     }

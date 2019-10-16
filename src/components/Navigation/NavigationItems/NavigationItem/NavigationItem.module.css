@@ -19,7 +19,7 @@
   color: #b31483;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 800px) {
   .NavigationItem {
     margin: 0;
     display: flex;

@@ -4,9 +4,7 @@ import styles from "./Tabs.module.css";
 
 class Tabs extends Component {
   state = {
-    activeTab: null,
-    height: null,
-    width: null
+    activeTab: null
   };
   constructor(props) {
     super(props);
@@ -14,22 +12,10 @@ class Tabs extends Component {
     this.selector = React.createRef();
     this.t1 = React.createRef();
     this.t2 = React.createRef();
-    this.state = {
-      height: window.innerHeight,
-      width: window.innerWidth
-    };
     this.updateDimensions = this.updateDimensions.bind(this);
   }
 
   componentDidMount() {
-    // Set Tab1 as the active one initially if nothing found on localstorage
-    // let activeTab = null;
-    // if (localStorage.getItem("activeTab") !== null) {
-    //   activeTab = parseInt(localStorage.getItem("activeTab"));
-    // } else {
-    //   activeTab = this.t1.current;
-    //   localStorage.setItem("activeTab", activeTab.name);
-    // }
     window.addEventListener("resize", this.updateDimensions);
     let activeTab = this.t1.current;
     let activeWidth = activeTab.offsetWidth;
@@ -46,10 +32,6 @@ class Tabs extends Component {
     let activeWidth = activeTab.offsetWidth;
     this.selector.current.style.left = activeTab.offsetLeft + "px";
     this.selector.current.style.width = activeWidth + "px";
-    this.setState({
-      height: window.innerHeight,
-      width: window.innerWidth
-    });
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
@@ -73,8 +55,6 @@ class Tabs extends Component {
 
     // Let the Parent know, which tab is selected
     this.props.clicked(activeTab.name);
-    // Set the active tab on the localstorage
-    localStorage.setItem("activeTab", activeTab.name);
   };
 
   render() {

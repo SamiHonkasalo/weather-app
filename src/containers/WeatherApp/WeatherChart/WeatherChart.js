@@ -200,7 +200,7 @@ class WeatherChart extends Component {
         position: "absolute",
         top: imageTop - imageWidth - 5 + "px",
         left: imageCenter - imageWidth / 2 + "px",
-        backgroundColor: "#c8edf7",
+        backgroundColor: "#226280",
         zIndex: 1
       };
       const imgStyle = {
@@ -219,30 +219,13 @@ class WeatherChart extends Component {
   };
 
   componentDidMount() {
-    // Logging the chart data etc
-    //console.log(this.chart.current.chart);
-    //------------
+    // Add the weather icons
     const icons = this.addImages(this.chart.current.chart);
     this.setState({ weatherIcons: icons });
-    //------------
-    // $( window ).resize(function() {
-    // 	var cloudyCounter = 0, rainyCounter = 0, sunnyCounter = 0;
-    // 	var imageCenter = 0;
-    // 	for(var i=0;i<chart.data[0].dataPoints.length;i++) {
-    // 		imageCenter = chart.axisX[0].convertValueToPixel(chart.data[0].dataPoints[i].x) - 20;
-    // 		if(chart.data[0].dataPoints[i].name == "cloudy") {
-    // 			$(".cloudy").eq(cloudyCounter++).css({ "left": imageCenter});
-    // 		} else if(chart.data[0].dataPoints[i].name == "rainy") {
-    // 			$(".rainy").eq(rainyCounter++).css({ "left": imageCenter});
-    // 		} else if(chart.data[0].dataPoints[i].name == "sunny") {
-    // 			$(".sunny").eq(sunnyCounter++).css({ "left": imageCenter});
-    // 		}
-    // 	}
-    // });
   }
 
   render() {
-    const options = {
+    const chartOptions = {
       animationEnabled: true,
       animationDuration: 1000,
       exportEnabled: false,
@@ -349,7 +332,7 @@ class WeatherChart extends Component {
     return (
       <div ref={this.container} className={styles.ChartContainer}>
         {this.state.weatherIcons}
-        <CanvasJSChart options={options} ref={this.chart} />
+        <CanvasJSChart options={chartOptions} ref={this.chart} />
       </div>
     );
   }

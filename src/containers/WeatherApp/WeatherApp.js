@@ -7,9 +7,6 @@ import Aux from "../../hoc/Auxiliary/Auxiliary";
 import ResultsContainer from "./ResultsContainer/ResultsContainer";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
-// ToDo: Delete
-import WeatherCard from "../../components/Weather/WeatherCard/WeatherCard";
-
 class WeatherApp extends Component {
   state = {
     selectedCity: null,
@@ -22,7 +19,6 @@ class WeatherApp extends Component {
 
   onSearchHandler = selection => {
     // Use Ajax to get the current weather of the location plus the five and ten day forecast
-    console.log(selection);
     this.setState({ selectedCity: selection, loading: true });
 
     axios
@@ -34,7 +30,6 @@ class WeatherApp extends Component {
           "&appid=3084b8c99da8af75a8e7853b3cd9a5f7"
       )
       .then(response => {
-        console.log(response);
         this.setState({ weatherCurrent: response.data });
         // After the previous query is done, ask for the five day forecast
         axios
@@ -46,8 +41,6 @@ class WeatherApp extends Component {
               "&appid=3084b8c99da8af75a8e7853b3cd9a5f7"
           )
           .then(response => {
-            console.log(response);
-
             // After the previous query is done, ask for the ten day forecast
             axios({
               method: "GET",
@@ -66,8 +59,6 @@ class WeatherApp extends Component {
               }
             })
               .then(response => {
-                console.log(response);
-
                 this.setState({
                   weatherTenDays: response.data,
                   showResults: true,
@@ -116,24 +107,6 @@ class WeatherApp extends Component {
         <SearchBar search={this.onSearchHandler} />
         {showSpinner}
         {results}
-        <WeatherCard
-          city={"Helsinki, Finland"}
-          weatherTime={new Date()/1000}
-          weatherIcon={"09n"}
-          country={"Finland"}
-          clouds={85}
-          rain={1.6}
-          snow={2.5}
-          wind={1.4}
-          weatherDesc={"Sunny"}
-          location={"Katajanokka"}
-          temperature={300}
-          humidity={65}
-          pressure={4.5}
-          sunset={new Date()/1000}
-          sunrise={new Date()/1000}
-          timezone={new Date()/1000}
-        />
       </Aux>
     );
   }

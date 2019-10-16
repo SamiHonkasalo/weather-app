@@ -3,13 +3,12 @@ import React from "react";
 import styles from "./WeatherCard.module.css";
 import humidityIcon from "../../../assets/images/004-rain.svg";
 import windIcon from "../../../assets/images/001-wind.svg";
-import pressureIcon from "../../../assets/images/003-air.svg"
+import pressureIcon from "../../../assets/images/003-air.svg";
 import rainIcon from "../../../assets/images/013-sturm.svg";
 import cloudIcon from "../../../assets/images/006-cloud.svg";
 import sunriseIcon from "../../../assets/images/008-sun.svg";
 import sunsetIcon from "../../../assets/images/010-sunset.svg";
 import snowIcon from "../../../assets/images/012-frost.svg";
-
 
 const currentWeather = props => {
   // Function to convert sunrise and sunset times to readable time from unix time
@@ -21,11 +20,8 @@ const currentWeather = props => {
     let hours = date.getHours();
     // Minutes part from the timestamp
     let minutes = "0" + date.getMinutes();
-    // Seconds part from the timestamp
-    let seconds = "0" + date.getSeconds();
-    // Will display time in HH:MM:SS format
-    let formattedTime =
-      hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+    // Will display time in HH:MM format
+    let formattedTime = hours + ":" + minutes.substr(-2);
     return formattedTime;
   };
 
@@ -134,77 +130,46 @@ const currentWeather = props => {
         <h3 className={styles.Description}>{props.weatherDesc}</h3>
       </div>
 
-      <div className={styles.Humidity}>
+      <div className={styles.SmallContainer}>
         <img src={humidityIcon} alt="Humidity" />
         <h3>{props.humidity + " %"}</h3>
       </div>
 
-      <div className={styles.Wind}>
+      <div className={styles.SmallContainer}>
+        <img src={pressureIcon} alt="Pressure" />
+        <h3>{props.pressure + " hPa"}</h3>
+      </div>
+
+      <div className={styles.SmallContainer}>
         <img src={windIcon} alt="Wind" />
         <h3>{parseFloat(props.wind) + " m/s"}</h3>
       </div>
 
-      <div className={styles.Cloud}>
+      <div className={styles.SmallContainer}>
         <img src={cloudIcon} alt="Clouds" />
         <h3>{cloudStr + " (" + props.clouds + " %)"}</h3>
       </div>
 
-      <div className={styles.Rain}>
+      <div className={styles.SmallContainer}>
         <img src={rainIcon} alt="Rain" />
         <h3>{parseFloat(props.rain) + " mm"}</h3>
       </div>
 
-      <div className={styles.Snow}>
+      <div className={styles.SmallContainer}>
         <img src={snowIcon} alt="Snow" />
         <h3>{parseFloat(props.snow) + " mm"}</h3>
       </div>
 
-      <div className={styles.Sunrise}>
+      <div className={styles.SmallContainer}>
         <img src={sunriseIcon} alt="Sunrise" />
         <h3>{sunrise + " (" + sunriseLocal + " local)"}</h3>
       </div>
 
-      <div className={styles.Sunset}>
+      <div className={styles.SmallContainer}>
         <img src={sunsetIcon} alt="Sunset" />
         <h3>{sunset + " (" + sunsetLocal + " local)"}</h3>
       </div>
     </div>
-
-    //   <WeatherLine label="Closest station:" text={props.location} />
-    //   <WeatherLine label={"Current Weather:"} />
-    //   <div className={styles.Left}>
-    //     <WeatherLine label="Weather description" text={props.weatherDesc} />
-    //     <WeatherLine
-    //       label="Cloudiness:"
-    //       text={" " + cloudStr + " (" + props.clouds + "%)"}
-    //     />
-    //     <WeatherLine
-    //       label="Wind speed:"
-    //       text={props.wind.toFixed(1) + " m/s"}
-    //     />
-    //     <WeatherLine
-    //       label="Temperature:"
-    //       text={
-    //         (parseInt(props.temperature) - 273.15).toFixed(1) +
-    //         " °C / " +
-    //         ((parseInt(props.temperature) * 9) / 5 - 459.67).toFixed(1) +
-    //         " °F"
-    //       }
-    //     />
-    //   </div>
-    //   <div className={styles.Right}>
-    //     <WeatherLine label="Humidity:" text={props.humidity + " %"} />
-    //     <WeatherLine label="Pressure:" text={props.pressure + " hpa"} />
-    //     <WeatherLine
-    //       label="Sunrise at:"
-    //       text={sunrise + " (at " + sunriseLocal + " local time)"}
-    //     />
-    //     <WeatherLine
-    //       label="Sunset at:"
-    //       text={sunset + " (at " + sunsetLocal + " local time)"}
-    //     />
-    //   </div>
-    // </div>
   );
 };
 

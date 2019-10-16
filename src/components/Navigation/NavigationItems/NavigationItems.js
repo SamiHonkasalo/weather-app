@@ -5,7 +5,7 @@ import NavigationItem from "./NavigationItem/NavigationItem";
 const navigationItems = props => (
   <ul className={styles.NavigationItems}>
     <NavigationItem link="/">Weather Search</NavigationItem>
-    <NavigationItem link="/info">Site Info</NavigationItem>
+    <NavigationItem link="/siteinfo">Site Info</NavigationItem>
   </ul>
 );
 
