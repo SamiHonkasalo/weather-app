@@ -207,7 +207,7 @@ class WeatherChart extends Component {
         width: imageWidth + "px"
       };
       const imgSrc =
-        "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
+        "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
       images.push(
         <div key={i} className={styles.Tooltip} style={divStyle}>
           <img src={imgSrc} alt={weatherDesc} style={imgStyle} />

@@ -1,8 +1,10 @@
 import React from "react";
 
+import styles from "./SiteInfo.module.css";
+
 const siteInfo = props => {
   return (
-    <div>
+    <div className={styles.InfoContainer}>
       <h1>Weather App Information</h1>
       <h3>Application made by Sami Honkasalo</h3>
       <p>
@@ -10,44 +12,102 @@ const siteInfo = props => {
         site was made with React. The "navigation" on the single page
         application was done with React-router. The city search was done with
         the{" "}
-        <a href="https://rapidapi.com/dev132/api/city-geo-location-lookup">
+        <a
+          href="https://rapidapi.com/dev132/api/city-geo-location-lookup"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           City-Geo-Location Lookup API
         </a>
         . The weather results are taken from the{" "}
-        <a href="https://openweathermap.org/">Open Weather Map API</a>. The
-        graphs for the results are done using{" "}
-        <a href="https://canvasjs.com/">CanvasJS</a>. The weather icons on the
-        current weather "card" are from{" "}
-        <a href="https://www.flaticon.com/home">Flaticon</a> from the following
-        authors:
+        <a
+          href="https://openweathermap.org/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Open Weather Map API
+        </a>
+        . The graphs for the results are done using{" "}
+        <a
+          href="https://canvasjs.com/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          CanvasJS
+        </a>
+        . The weather icons on the current weather "card" are from{" "}
+        <a
+          href="https://www.flaticon.com/home"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Flaticon
+        </a>{" "}
+        from the following authors:
       </p>
       <ul>
         <li>
-          <a href="https://www.flaticon.com/authors/swifticons">Swifticons</a>
+          <a
+            href="https://www.flaticon.com/authors/swifticons"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Swifticons
+          </a>
         </li>
         <li>
-          <a href="https://www.flaticon.com/authors/vitaly-gorbachev">
+          <a
+            href="https://www.flaticon.com/authors/vitaly-gorbachev"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             Vitaly Gorbachev
           </a>
         </li>
         <li>
-          <a href="https://www.flaticon.com/authors/pixel-perfect">
+          <a
+            href="https://www.flaticon.com/authors/pixel-perfect"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             Pixel Perfect
           </a>
         </li>
         <li>
-          <a href="https://www.flaticon.com/authors/nikita-golubev">
+          <a
+            href="https://www.flaticon.com/authors/nikita-golubev"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             Nikita Golubev
           </a>
         </li>
         <li>
-          <a href="https://www.flaticon.com/authors/pause08">Pause08</a>
+          <a
+            href="https://www.flaticon.com/authors/pause08"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Pause08
+          </a>
         </li>
         <li>
-          <a href="https://www.flaticon.com/authors/smashicons">Smashicons</a>
+          <a
+            href="https://www.flaticon.com/authors/smashicons"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Smashicons
+          </a>
         </li>
         <li>
-          <a href="https://www.flaticon.com/authors/good-ware">Good Ware</a>
+          <a
+            href="https://www.flaticon.com/authors/good-ware"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Good Ware
+          </a>
         </li>
       </ul>
     </div>

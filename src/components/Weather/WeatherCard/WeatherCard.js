@@ -111,7 +111,7 @@ const currentWeather = props => {
 
   // Get the icon matching the weather
   const imgSrc =
-    "http://openweathermap.org/img/wn/" + props.weatherIcon + "@2x.png";
+    "https://openweathermap.org/img/wn/" + props.weatherIcon + "@2x.png";
 
   return (
     <div className={styles.WeatherCard}>
