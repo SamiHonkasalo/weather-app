@@ -18,7 +18,7 @@ class WeatherApp extends Component {
   };
 
   onSearchHandler = selection => {
-    // Use Ajax to get the current weather of the location plus the five and ten day forecast
+    // Use Axios to get the current weather of the location plus the five and ten day forecast
     this.setState({ selectedCity: selection, loading: true });
 
     axios
