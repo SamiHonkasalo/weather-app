@@ -13,11 +13,11 @@ const siteInfo = props => {
         application was done with React-router. The city search was done with
         the{" "}
         <a
-          href="https://rapidapi.com/dev132/api/city-geo-location-lookup"
+          href="https://rapidapi.com/wirefreethought/api/geodb-cities"
           target="_blank"
           rel="noreferrer noopener"
         >
-          City-Geo-Location Lookup API
+          GeoDB Cities API
         </a>
         . The weather results are taken from the{" "}
         <a
